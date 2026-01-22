@@ -113,3 +113,14 @@ Resource Group > Create > Azure Data Factory > Create > (give data bricks resour
   - And give dynamic Parameter Values :
 
     ![sink_param_value](screenshots/sink_param_value.png)
+
+  - Again go to Sink Dataset and in file path :
+    Bronze/**do dynamic content** and give this code:
+
+        @{concat(dataset().schemaname,'/',dataset().tablename)}
+    
+    and File name as :
+
+        @{concat(dataset().tablename,'.parquet')}
+    
+  - Publish the pipeline.
