@@ -49,3 +49,28 @@ Resource Group > Create > Azure Data Factory > Create > (give data bricks resour
 
 ## **All Azure Resources for the project:**
 ![all_resource](screenshots/All_azure_resource.png)
+
+## **Create new SQL server authentication:**
+1. Go to SQL server and login : Windows authentication.
+2. go to : Securities > New user > give user id > select SQL server authentication > give password > create.
+3. Give all the roles:
+   ![sql_roles](screenshots/SQL_server_role.png)
+4. #### SQL User Mapping:
+   - Select the proper Databses.
+   - give dbowner role.
+     
+     ![sql_server_mapping](screenshots/sql_user_mapping.png)
+
+## **Data Ingestion:**
+* Go to Azure Data Factory > Launch Studio.
+* Go to Integration runtimes > New > Create > Azure Self Hosted Integration runtimes
+  
+  ![Iruntime](screenshots/create_integration_runtime.png)
+  
+* Create with these below options :
+  
+  ![IR](screenshots/IR1.png)
+* Create Linked Service > Select the **Self Hosted Integration Service** and **SQL Server Authentication**\
+  Give deatils of the SQL db we created in SSMS and test connection.
+
+  ![SQl_test_Connection](screenshots/sql_auth.png)
