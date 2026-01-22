@@ -10,7 +10,6 @@ We have used AdventureWorks database as SQL data source.
 The AdventureWorks database is a popular and widely-used sample database provided by Microsoft for SQL Server.
 
 Go to : Microsoft GitHub repository:
-![Project_architecture](/screenshots/Project_architecure.png)
 
   
     https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks
