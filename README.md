@@ -74,3 +74,42 @@ Resource Group > Create > Azure Data Factory > Create > (give data bricks resour
   Give deatils of the SQL db we created in SSMS and test connection.
 
   ![SQl_test_Connection](screenshots/sql_auth.png)
+
+  ### **create pipeline : **
+  - Ingest_data_from SQl_server.
+  - Before that get all the tables list in SQL server using the below scripts:
+ 
+        SELECT
+        s.name AS SchemaName,
+        t.name AS TableName
+        FROM sys.tables t
+        INNER JOIN sys.schemas s
+        ON t.schema_id = s.schema_id
+        WHERE s.name = 'SalesLT'
+  - Create one Lookup Activeity : Look table name from SQL server
+  - In settings > Create new data set > SQL server > leave the tables name blank.
+  - In lokup activity select Query option. Remember to uncheck the**First row Only** Option.
+  - we will get a JSON output from the lookup activity with all the table names.
+  - Now to fetch the table names from the JSON we will apply **For Each Activity** on the output of lokup.
+  - In For Each Activity > Settings > Items > Dynamic Content >
+ 
+        @activity('Look table name from SQL server').output.value
+  - Inside For Each Activity > Copy Data (Copy Each Table) > Select Source Data Set
+  - Go to Query and put the below statement there:
+
+        @{concat('select * FROM ',item().Schemaname,'.',item().Tablename)}
+  - Configure the Sink :
+    New > Azure Data Lake Storage Gen2 > Parquet > Create a new link service for Azure :
+
+    ![new_link_service](screenshots/azure_link_service.png)
+
+  - Select **Bronze** container.
+  - to maintain the proper folder structure as : Bronze/SchemaName/TableName/TableName.Parquet
+    edit the Sink dataset.
+  - Create two Sink Parameters:
+
+    ![sink_param](screenshots/sink_param.png)
+
+  - And give dynamic Parameter Values :
+
+    ![sink_param_value](screenshots/sink_param_value.png)
