@@ -10,6 +10,7 @@ We have used AdventureWorks database as SQL data source.
 The AdventureWorks database is a popular and widely-used sample database provided by Microsoft for SQL Server.
 
 Go to : Microsoft GitHub repository:
+![Project_architecture](/screenshots/Project_architecure.png)
 
   
     https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks
@@ -20,3 +21,6 @@ AdventureWorks2022.bak \
 Go on this link to learn how to restore the db in SSMS :
 
     https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms
+
+## **Project Architecture:**
+![project_architecture](screenshots/Project_architecure.png)
